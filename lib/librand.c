@@ -59,5 +59,14 @@ double RSGauss(rand_workspace *w, double m, double s){
 	return sqrt(-2*log(U1))*cos(2*M_PI*U2);
 }
 
+double RSExpo(rand_workspace *w, double lambda){
+	return -lambda*log(RSUnif(w, 0, 1));
+}
+
+double RSCauchy(rand_workspace *w, double mean, double gamma){
+	double x = tan(RSUnif(w, -M_PI/2, M_PI/2));
+	return gamma*x/2 + mean;
+}
+
 
 

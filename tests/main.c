@@ -8,13 +8,13 @@
 //#define OPENMP_MODE
 #ifdef OPENMP_MODE
   #include<omp.h>
-  #define NTHREADS 2
+  #define NTHREADS 6
 #else
   #define NTHREADS 1
 #endif
 
 
-#define N (uint64_t)1E9
+#define N (uint64_t)1E10
 
 
 int main(){
@@ -37,8 +37,10 @@ int main(){
 		#else
 		rand_workspace* W=w;
 		#endif
-		y = RSUnif(W, 0., 1.);
-		z = RSUnif(W, 0., 1.);
+		//y = RSUnif(W, 0., 1.);
+		//z = RSUnif(W, 0., 1.);
+		y = RSExpo(W, 1.);
+		z = RSExpo(W, 1.);
 		if((y*y + z*z) < 1){
 			pi++;
 		}
