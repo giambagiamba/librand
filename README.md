@@ -1,5 +1,12 @@
-Random number generator based on the XorShift128+ algorithm.
-============================================================
+This library is based on the XorShift128+ algorithm from George Marsaglia. See:
+
+- https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&cad=rja&uact=8&ved=2ahUKEwj4-7LH1Lv0AhVR-qQKHYvrB24QFnoECAMQAQ&url=https%3A%2F%2Fwww.jstatsoft.org%2Fv08%2Fi14%2Fpaper&usg=AOvVaw1xSWaplBRHJAI0j_kNoXGh
+- https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&cad=rja&uact=8&ved=2ahUKEwj4-7LH1Lv0AhVR-qQKHYvrB24QFnoECAQQAQ&url=https%3A%2F%2Fen.wikipedia.org%2Fwiki%2FXorshift&usg=AOvVaw39J8b0f91qCAuuZiK0VTSE
+- https://vigna.di.unimi.it/ftp/papers/xorshiftplus.pdf
+- https://vigna.di.unimi.it/xorshift/xorshift128plus.c
+
+It uses a 128-bit state and returns 64-bit uniformly distributed numbers.
+
 
 Structure of this library
 -------------------------
@@ -29,6 +36,10 @@ The following functions are available:
 
 - `double RSCauchy(rand_workspace *w, double mean, double gamma);`
 	Generate one random number following a Cauchy distribution with parameters *mean* and *gamma*. *gamma* can be also negative.
+
+
+A simple example is provided in the `tests` folder.
+
 
 Usage
 -----
