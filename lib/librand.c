@@ -8,10 +8,15 @@
 
 typedef struct{
 	uint64_t s[2];
+	double x;
+	unsigned char state;
 } rand_workspace;
 
 rand_workspace *RandAlloc(){
-	return malloc(sizeof(rand_workspace));
+	rand_workspace *w = malloc(sizeof(rand_workspace));
+	w->state = 0;
+
+	return w;
 }
 
 void SetRandomSeed(rand_workspace *w){
@@ -40,7 +45,7 @@ void SetRandomSeed(rand_workspace *w){
 	return;	
 }
 
-double RSUnif(rand_workspace *w, double a, double b){
+double RSUnif(rand_workspace *restrict w, double a, double b){
 	uint64_t x = w->s[0];
 	uint64_t const y=w->s[1];
 	uint64_t pres;

@@ -3,7 +3,7 @@
 //#include <stdint.h>
 //#include <math.h>
 //#include<sys/types.h>
-#include "../lib/librand.h"
+#include "../lib/librand.c"
 
 //#define OPENMP_MODE
 #ifdef OPENMP_MODE
