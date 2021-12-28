@@ -8,15 +8,10 @@
 
 typedef struct{
 	uint64_t s[2];
-	double x;
-	unsigned char state;
 } rand_workspace;
 
 rand_workspace *RandAlloc(){
-	rand_workspace *w = malloc(sizeof(rand_workspace));
-	w->state = 0;
-
-	return w;
+	return malloc(sizeof(rand_workspace));
 }
 
 void SetRandomSeed(rand_workspace *w){
@@ -45,7 +40,7 @@ void SetRandomSeed(rand_workspace *w){
 	return;	
 }
 
-double RSUnif(rand_workspace *restrict w, double a, double b){
+double RSUnif(rand_workspace *w, double a, double b){
 	uint64_t x = w->s[0];
 	uint64_t const y=w->s[1];
 	uint64_t pres;
@@ -62,6 +57,15 @@ double RSGauss(rand_workspace *w, double m, double s){
 	double U2 = RSUnif(w, 0, 1);
 	
 	return sqrt(-2*log(U1))*cos(2*M_PI*U2);
+}
+
+double RSExpo(rand_workspace *w, double lambda){
+	return -lambda*log(RSUnif(w, 0, 1));
+}
+
+double RSCauchy(rand_workspace *w, double mean, double gamma){
+	double x = tan(RSUnif(w, -M_PI/2, M_PI/2));
+	return gamma*x/2 + mean;
 }
 
 

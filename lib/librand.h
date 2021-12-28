@@ -13,5 +13,7 @@ typedef struct{
 rand_workspace *RandAlloc();
 void SetRandomSeed(rand_workspace *w);
 double RSUnif(rand_workspace *w, double a, double b);
-double RSGauss();
+double RSGauss(rand_workspace *w, double m, double s);
+double RSExpo(rand_workspace *w, double lambda);
+double RSCauchy(rand_workspace *w, double mean, double gamma);
 
